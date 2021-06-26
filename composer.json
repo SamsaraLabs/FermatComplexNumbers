@@ -1,0 +1,42 @@
+{
+  "name": "samsara/fermat-complex-numbers",
+  "type": "library",
+  "description": "A module for the Fermat math library which handles complex numbers.",
+  "keywords": ["math", "bigint", "large numbers", "numbers", "complex numbers", "imaginary numbers"],
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://jordanrl.github.io/Fermat/",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/JordanRL"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/JordanRL/Fermat/issues",
+    "docs": "https://jordanrl.github.io/Fermat/",
+    "source": "https://github.com/SamsaraLabs/FermatComplexNumbers"
+  },
+  "authors": [
+    {
+      "name": "Jordan LeDoux",
+      "homepage": "https://github.com/JordanRL",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "samsara/fermat-coordinate-systems": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Samsara\\Fermat\\": "src/Samsara/Fermat/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Samsara\\Fermat\\": "tests/Samsara/Fermat/"
+    }
+  }
+}
