@@ -39,5 +39,7 @@
     "psr-4": {
       "Samsara\\Fermat\\": "tests/Samsara/Fermat/"
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
