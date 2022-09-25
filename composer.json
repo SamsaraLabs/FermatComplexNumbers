@@ -24,7 +24,7 @@
     }
   ],
   "require": {
-    "samsara/fermat-coordinate-systems": "^1",
+    "samsara/fermat-coordinate-systems": "dev-master",
     "samsara/fermat-algebra-expressions": "dev-master"
   },
   "require-dev": {
