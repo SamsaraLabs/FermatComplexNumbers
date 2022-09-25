@@ -116,6 +116,7 @@ trait ArithmeticComplexTrait
         }
 
         $value = $newRealPart->isEqual(0) ? $newImaginaryPart : $newRealPart;
+        $value = $value->isEqual(0) ? new ImmutableDecimal(0) : $value;
 
         return new ImmutableDecimal($value->getValue());
 
@@ -162,6 +163,23 @@ trait ArithmeticComplexTrait
             $thisImaginaryPart,
             $num
         ] = $this->translateToParts($this, $num, 1);
+
+        /*
+         * If the exponent is a real, positive integer, then we can just do repeated multiplication faster
+         */
+        if ($num->isReal() && $num->isNatural() && $num->isPositive()) {
+            $newValue = clone $this;
+
+            for ($i=0;$num->isGreaterThan($i);$i++) {
+                $newValue = $newValue->multiply($this);
+            }
+
+            if ($newValue instanceof DecimalInterface) {
+                return $newValue;
+            } else {
+                return $this->setValue($newValue->getRealPart(), $newValue->getImaginaryPart());
+            }
+        }
 
         $internalScale = ($this->getScale() > $num->getScale()) ? $this->getScale() : $num->getScale();
         $internalScale += 5;

@@ -10,6 +10,7 @@ use Samsara\Fermat\Types\Base\Interfaces\Numbers\SimpleNumberInterface;
 use Samsara\Fermat\Types\Traits\ArithmeticComplexTrait;
 use Samsara\Fermat\Values\Geometry\CoordinateSystems\CartesianCoordinate;
 use Samsara\Fermat\Values\Geometry\CoordinateSystems\PolarCoordinate;
+use Samsara\Fermat\Values\ImmutableComplexNumber;
 use Samsara\Fermat\Values\ImmutableFraction;
 use Samsara\Fermat\Values\ImmutableDecimal;
 
@@ -95,13 +96,13 @@ abstract class ComplexNumber extends PolarCoordinate implements ComplexNumberInt
             if (is_string($value)) {
                 try {
                     $value = static::makeFromString($value);
-                } catch (IntegrityConstraint $constraint) {
+                } catch (IntegrityConstraint) {
                     return false;
                 }
             } elseif (is_array($value)) {
                 try {
                     $value = static::makeFromArray($value);
-                } catch (IntegrityConstraint $constraint) {
+                } catch (IntegrityConstraint) {
                     return false;
                 }
             } else {
@@ -195,9 +196,9 @@ abstract class ComplexNumber extends PolarCoordinate implements ComplexNumberInt
         return $this->getRealPart()->getValue().$joiner.$this->getImaginaryPart()->getValue();
     }
 
-    public function asComplex(): ComplexNumber
+    public function asComplex(): ImmutableComplexNumber
     {
-        return $this;
+        return new ImmutableComplexNumber($this->getRealPart(), $this->getImaginaryPart());
     }
 
 }

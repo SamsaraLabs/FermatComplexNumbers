@@ -13,12 +13,12 @@ use PHPUnit\Framework\TestCase;
 class ImmutableComplexNumberTest extends TestCase
 {
 
-    protected static $complexOneOne;
-    protected static $complexOneTwo;
-    protected static $complexTwoTwo;
-    protected static $complexOneNegTwo;
-    protected static $complexNegOneNegTwo;
-    protected static $complexThreeFour;
+    protected static ImmutableComplexNumber $complexOneOne;
+    protected static ImmutableComplexNumber $complexOneTwo;
+    protected static ImmutableComplexNumber $complexTwoTwo;
+    protected static ImmutableComplexNumber $complexOneNegTwo;
+    protected static ImmutableComplexNumber $complexNegOneNegTwo;
+    protected static ImmutableComplexNumber $complexThreeFour;
 
     public static function setUpBeforeClass(): void
     {
@@ -187,5 +187,14 @@ class ImmutableComplexNumberTest extends TestCase
         $this->assertEquals('4i', $complexSmall->multiply($complex)->getValue());
 
     }
+
+    /*
+    public function testPow()
+    {
+        $complex = self::$complexTwoTwo;
+
+        $this->assertEquals('2+2i', $complex->pow(2)->getValue());
+    }
+    */
 
 }
